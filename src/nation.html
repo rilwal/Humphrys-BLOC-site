@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="apiApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel=stylesheet type=text/css href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <title>Nation Viewer</title>
+</head>
+
+<body data-ng-controller="apiCtrl" style="paddidata-ng-top: 60px">
+    <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                    <img src="img/logo.png" alt="Logo" height=50 width=400 style="margin-top:-15px; margin-left:-15px;">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href='/'>Home</a>
+                        </li>
+                        <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="nations.html">Nation List</a>
+                                </li>
+                                <li><a href="nation.html" class="active">Nation Viewer</a>
+                                </li>
+                                <li><a href="target.html">Target Finder</a>
+                                </li>
+                                <li><a href="planner.html">Planner</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="scraper.html">Scraper</a>
+                        </li>
+                        <li><a href="about.html">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <h1>Nation Viewer</h1>
+        <p>This is a page to view any nation in BLOC, powered by Humphrey's BLOC API</p>
+        <form>
+            <div class="form-group">
+                <input type="text" placeholder="Nation or Leader Name" class="form-control" name="Leader" data-ng-model="Name">
+            </div>
+        </form>
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <td>{{nation["_id"]}}</td>
+            </tr>
+            <tr>
+                <th>Leader</th>
+                <td>{{nation.Leader}}</td>
+            </tr>
+            <tr>
+                <th>Nation</th>
+                <td><a href="http://blocgame.com/stats.php?id={{nation._id}}">{{nation.Nation}}</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Equipment</th>
+                <td>{{nation.Equipment}}</td>
+            </tr>
+            <tr>
+                <th>Discovered Oil Reserves</th>
+                <td>{{nation["Discovered Oil Reserves"]}}Mbbl</td>
+            </tr>
+            <tr>
+                <th>Territory</th>
+                <td>{{nation.Territory}}km&sup2;</td>
+            </tr>
+            <tr>
+                <th>Gross Domestic Product</th>
+                <td>${{nation["Gross Domestic Product"]}}Million</td>
+            </tr>
+            <tr>
+                <th>Manpower</th>
+                <td>{{nation.Manpower}}</td>
+            </tr>
+            <tr>
+                <th>Rebel Threat</th>
+                <td>{{nation["Rebel Threat"]}}</td>
+            </tr>
+            <tr>
+                <th>Economic System</th>
+                <td>{{nation["Economic System"]}}</td>
+            </tr>
+            <tr>
+                <th>Army Size</th>
+                <td>{{nation["Army Size"]}}K</td>
+            </tr>
+            <tr>
+                <th>Approval</th>
+                <td>{{nation["Approval"]}}</td>
+            </tr>
+            <tr>
+                <th>Industry</th>
+                <td>{{nation["Industry"]}}</td>
+            </tr>
+            <tr>
+                <th>Training</th>
+                <td>{{nation["Training"]}}</td>
+            </tr>
+            <tr>
+                <th>Airforce</th>
+                <td>{{nation["Airforce"]}}</td>
+            </tr>
+            <tr>
+                <th>Quality of Life</th>
+                <td>{{nation["Quality of Life"]}}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{nation["Region"]}}</td>
+            </tr>
+            <tr>
+                <th>Official Alignment</th>
+                <td>{{nation["Official Alignment"]}}</td>
+            </tr>
+            <tr>
+                <th>Reputation</th>
+                <td>{{nation["Reputation"]}}</td>
+            </tr>
+            <tr>
+                <th>Oil Production</th>
+                <td>{{nation["Oil Production"]}}Mbbls / Month</td>
+            </tr>
+            <tr>
+                <th>Political System</th>
+                <td>{{nation["Political System"]}}</td>
+            </tr>
+            <tr>
+                <th>Alliance</th>
+                <td>{{nation["Alliance"]}}</td>
+            </tr>
+            <tr>
+                <th>Stability</th>
+                <td>{{nation["Stability"]}}</td>
+            </tr>
+            <tr>
+                <th>Growth</th>
+                <td>${{nation["Growth"]}}million per month</td>
+            </tr>
+            <tr>
+                <th>Raw Material Production</th>
+                <td>{{nation["Raw Material Production"]}}Htons / Month</td>
+            </tr>
+            <tr>
+                <th>Last Online</th>
+                <td>{{nation["Last Online"]}}Hours Ago</td>
+            </tr>
+            <tr>
+                <th>Data Updated</th>
+                <td>{{nation["Updated"]["$date"] | date : "HH:mm dd/MM/yy"}}</td>
+            </tr>
+        </table>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7669865777752947" data-ad-slot="4677308512" data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <script src=https://code.jquery.com/jquery-2.1.1.min.js></script>
+    <script src=http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
+    <script src="js/nation.js"></script>
+    <script>
+        (function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b;a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)};a[b].l=1*new Date;c=e.createElement(f);d=e.getElementsByTagName(f)[0];c.async=1;c.src=g;d.parentNode.insertBefore(c,d)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create","UA-53608000-2","auto");ga("require","displayfeatures");ga("send","pageview");
+    </script>
+</body>
+
+</html>

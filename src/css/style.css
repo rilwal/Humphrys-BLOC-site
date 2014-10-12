@@ -1,0 +1,42 @@
+input.data-ng-invalid {
+    background: #ff7878;
+}
+@media all and (min-width: 970px) {
+    .modal .container {
+        width: 90% !important;
+    }
+}
+@media all and (max-width: 969px) {
+    .modal .container {
+        width: 100% !important;
+    }
+}
+.nation-table {
+    width: 100%;
+    overflow-x: scroll;
+
+}
+
+.nation-table .tbody{
+    overflow-y: scroll;
+    height: 70px;
+}
+
+body {
+    height: 100%;
+}
+
+html {
+    height: 100%;   
+}
+
+thead tr{
+    position: relative;
+    top: 60px;
+    background: #222;
+    color: #fff;
+}
+
+.ColVis_collectionBackground {
+     background: #101010;   
+}

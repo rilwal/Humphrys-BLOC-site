@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Humphrey's BLOC Site</title>
+    <link rel=stylesheet type=text/css href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+
+<body style="paddidata-ng-top: 60px">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img src="img/logo.png" alt="Logo" height=50 width=400 style="margin-top:-15px; margin-left:-15px;">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href='/'>Home</a>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="nations.html">Nation List</a>
+                            </li>
+                            <li><a href="nation.html">Nation Viewer</a>
+                            </li>
+                            <li><a href="planner.html">Planner</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="scraper.html">Scraper</a>
+                    </li>
+                    <li><a href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Humphrey's BLOC Site</h1>
+        <p>This is the homepage for Humphrey's BLOC Site. Here you will find a variety of utilities, tools and an API for the game <a href="http://blocgame.com">BLOC</a>.</p>
+        <h3>Tools</h3>
+        <ul>
+            <li><a href="nations.html">Nations</a>: A searchable, filterable list of all active (non vacation mode) nations in BLOC, updated daily</li>
+            <li><a href="nation.html">Nation Viewer</a>: A viewer to show all the information on a single nation in BLOC, loads much faster than official BLOC pages</li>
+            <li><a href="planner.html">Planner</a>: A planner, for planning out your game in BLOC</li>
+            <li><a href="target.html">Target Finder</a>: A taget finder for BLOC, will help you to find valid targets and quickly evaluate them without opening hundreds of bloc tabs</li>
+        </ul>
+        <h3>API</h3>
+        <ul>
+            <li><a href="scraper.html">Scraper</a>: A scraper for getting information from BLOC pages and storing it in a MongoDB database</li>
+            <li><a href="api.html">API</a>: An API for accessing the data from my scraper, used by all my tools</li>
+        </ul>
+    </div>
+    
+    <script src=https://code.jquery.com/jquery-2.1.1.min.js></script>
+    <script async src=http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script>
+    <script>
+        (function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b;a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)};a[b].l=1*new Date;c=e.createElement(f);d=e.getElementsByTagName(f)[0];c.async=1;c.src=g;d.parentNode.insertBefore(c,d)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create","UA-53608000-2","auto");ga("require","displayfeatures");ga("send","pageview");
+    </script>
+</body>
+
+</html>

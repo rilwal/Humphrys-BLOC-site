@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scraper | Humphrey's BLOC Site</title>
+    <link rel="stylesheet" type="text/css" href="css/prism.min.css">
+    <link rel=stylesheet type=text/css href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+
+<body style="paddidata-ng-top: 60px;">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img src="img/logo.png" alt="Logo" height=50 width=400 style="margin-top:-15px; margin-left:-15px;">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href='/'>Home</a>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="nations.html">Nation List</a>
+                            </li>
+                            <li><a href="nation.html" class="active">Nation Viewer</a>
+                            </li>
+                            <li><a href="target.html">Target Finder</a>
+                            </li>
+                            <li><a href="planner.html">Planner</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="scraper.html">Scraper</a>
+                    </li>
+                    <li><a href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Scraper</h1>
+        <p>This is a program written in pyhon to scrape pages from <a href="http://blocgame.com">BLOC</a>. It is licensed under the GNU GPL v3 so as long as your modifications are also under this license, you can do what you want with it. It is not recommended that you use this, but instead that you use my API from <a href="api.html">here</a>.</p><a href="scraper/scraper.py" class="pull-right">Download</a>
+        <h4>Scraper.py</h4><pre style="height: 500px;"><code style="height: 3575x;" class="language-python">#!/usr/bin/env python
+
+from lxml import html
+import requests
+import json
+from progressbar import *
+import thread
+import threading
+import time
+import datetime
+from pymongo import MongoClient
+
+def cleanNation(n):
+    stabilities = {"Brink of Collapse": -5, "Mass Protests": -4, "Rioting": -3, "Chaotic": -2, "Growing Tensions": -1, "Seemingly Calm": 1, "Quiet": 2, "Very Stable": 3, "Entrenched": 4, "Unsinkable": 5}
+    
+    n["Territory"] = int(n["Territory"].split(' ')[0])
+    if n["Discovered Oil Reserves"][:-5] != "":
+        n["Discovered Oil Reserves"] = int(n["Discovered Oil Reserves"][:-5])
+    else:
+        n["Discovered Oil Reserves"] = 0
+    n["Gross Domestic Product"] = int(n["Gross Domestic Product"][1:-8])
+    n["Last Online"] = int(0 if n["Last Online"] == "online now" else n["Last Online"][12:-10])
+    n["Army Size"] = int(n["Army Size"][:-18])
+    n["Official Alignment"] = n["Official Alignment"][:-1]
+    if n["Oil Production"][:-15] != "":
+        n["Oil Production"] = int(n["Oil Production"][:-15])
+    else:
+        n["Oil Production"] = 0
+    n["Growth"] = int(n["Growth"][1:-18])
+    n["Raw Material Production"] = int(n["Raw Material Production"][:-24])
+    n["Stability"] = stabilities[n["Stability"]]
+    n["Updated"] = datetime.datetime.utcnow()
+    n.pop("Progress to next equipment level", None)
+    n.pop("Oil Supply", None)
+    n.pop("Intelligence Agency", None)
+    n.pop("Raw Material", None)
+    n.pop("Chemical Weapons", None)
+    return n
+
+def nation(id):
+    page = requests.get('http://blocgame.com/stats.php?id=%s' % str(id))
+    tree = html.fromstring(page.text)
+    if len(tree.xpath('//div[@class="well"]')) == 0:
+        n = {"_id": id}
+        n["Nation"] = tree.xpath('//p[@id="nationtitle"]/b')[0].text
+        l = tree.xpath('//i[@class="lead"]/b')
+        ld = tree.xpath('//font[@color="blue"]/text()')
+        n["Leader"] = l[0].text if len(ld) == 0 else ld[0]
+        n["Last Online"] = tree.xpath('//font[@size="2"]')[0].text
+        stats = tree.xpath('//tr')
+        for i in range(1, 28):
+            k = str(stats[i][0].text)[:-1]
+            v = stats[i][1]
+            if v[0].text == None:
+                if v[0][0].text == None:
+                    n[k] = v[0][0][0].text
+                else:
+                    n[k] = v[0][0].text
+            else:
+                n[k] = v[0].text
+        return cleanNation(n)
+    return None
+        
+def getNation(id):
+    client = MongoClient('localhost', 27017)
+    db = client.bloc
+    collection = db.nations
+    n = nation(id)
+    if n != None:
+        collection.save(n)
+    
+def nationList(index, nationlist):
+        page = requests.get('http://blocgame.com/rankings.php?page=%s' % str(index))
+        tree = html.fromstring(page.text)
+        nations = tree.xpath('//table/tr/td/h4/a/@href')
+        if len(nations) == 0:
+            return None
+        for nation in nations:
+            nationlist.append(nation[nation.find("=")+1:])
+
+def getNationList():
+    print "Getting List of Nations"
+    nationlist = []
+    for index in range (135):
+        threading.Thread(target=nationList, args=(index, nationlist,)).start()
+        while threading.activeCount() > 8:
+            time.sleep(1)
+    while threading.activeCount() > 1:
+        time.sleep(1)
+    return nationlist
+    
+nations = getNationList()
+numNations = len(nations)
+progress = ProgressBar(maxval=numNations).start()
+done = 0;
+
+for id in nations:
+    threading.Thread(target=getNation, args=(id,)).start()
+    while threading.activeCount() > 8:
+        time.sleep(1)
+    done += 1
+    progress.update(done)
+
+while threading.activeCount() > 1:
+    time.sleep(1)
+    
+progress.finish()</code></pre>
+    </div>
+    <script src=https://code.jquery.com/jquery-2.1.1.min.js></script>
+    <script src=http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script>
+    <script src="js/prism.js"></script>
+    <script>
+        (function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b;a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)};a[b].l=1*new Date;c=e.createElement(f);d=e.getElementsByTagName(f)[0];c.async=1;c.src=g;d.parentNode.insertBefore(c,d)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create","UA-53608000-2","auto");ga("require","displayfeatures");ga("send","pageview");
+    </script>
+</body>
+
+</html>
