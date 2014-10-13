@@ -5,49 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Humphrey's BLOC Site</title>
-    <link rel=stylesheet type=text/css href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel=icon type="image/x-icon" href="img/favicon.png">
 </head>
 
-<body style="paddidata-ng-top: 60px">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">
-                    <img src="img/logo.png" alt="Logo" height=50 width=400 style="margin-top:-15px; margin-left:-15px;">
-                </a>
+<body style="padding-top: 60px">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                    <img src="img/logo.png" alt="Logo" class="logo">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href='/'>Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="nations.html">Nation List</a></li>
+                                <li><a href="nation.html" class="active">Nation Viewer</a></li>
+                                <li><a href="target.html">Target Finder</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href='#'class="dropdown-toggle" data-toggle="dropdown">Backend <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="scraper.html">Scraper</a></li>
+                                <li><a href="api.html">API</a></li>
+                            </ul>
+                        </li>
+                        <li class="active"><a href="about.html">About</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href='/'>Home</a>
-                    </li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="nations.html">Nation List</a>
-                            </li>
-                            <li><a href="nation.html">Nation Viewer</a>
-                            </li>
-                            <li><a href="target.html">Target Finder</a>
-                            </li>
-                            <li><a href="planner.html">Planner</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="scraper.html">Scraper</a>
-                    </li>
-                    <li class="active"><a href="about.html">About</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+        </nav>
     <div class="container">
         <h1>About Humphrey's BLOC Site</h1>
         <h3>About Me</h3>
         <p>I am a high school student from New Zealand, player of BLOC, member of the SPQR alliance, and part time programmer.</p>
         <h3>Support Me</h3>
-        <p>Coding these tools takes a lot of time and hosting costs quite a bit too. While I'm happy to do it for free, and donations would be greatly appreciated and would allow me to spend more time ensuring their quality. I can take paypal or BLOC stuff (RM, Oil and money). If you donate any amount more than a dollar, or more than $10,000K in bloc (or equicalent based on current market prices) you will get your name on the front page. Once you have donated, either send me a communique on bloc or find me on IRC to get on the front page.</p>
+        <p>Coding these tools takes a lot of time and hosting costs quite a bit too. While I'm happy to do it for free, and donations would be greatly appreciated and would allow me to spend more time ensuring their quality. I can take paypal or BLOC stuff (RM, Oil and money). If you donate any amount more than a dollar, or more than $10,000K in bloc (or equivalent based on current market prices) you will get your name on the front page. Once you have donated, either send me a communique on bloc or find me on IRC to get on the front page.</p>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="pull-right">
             <input type="hidden" name="cmd" value="_s-xclick">
             <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----MIIHRwYJKoZIhvcNAQcEoIIHODCCBzQCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYAQEl/OSCK5fwYzfM7oZGdaflOXZH2SK2GYpa3IOjFwYCMMybOroqNgu0mky7Ev0h7EhjEEvzWAF33TFq9vIDxCNrKzhQao//LS4kXmGjj1cWxucC996Atqz8RlZwP3Jx0nCHe7mnpFuu/UFAhmvBiJ4e8EdVcnQickdnpseTpfNjELMAkGBSsOAwIaBQAwgcQGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQIhJwEwTiI26iAgaBecOD9fvCLhYjztaNJj386wPDFjA6C2TJ+VpXn50Lp9vNEKQZ5EfrDWdnCxb3ljxPRdnnAMFmcvOqa60WfX8nJA9HkKZLT/G90ZCXXeIhE7tJ0jFX9S3Sz6AVbrSaRR/ndf7BXAEGk6YuDjWuvZa+r2/hJ93JTTLp7CD10TseVV93iI+1ZtVQMQ/NwCq2A6r9LXScVGavyv6iylf6p2TxqoIIDhzCCA4MwggLsoAMCAQICAQAwDQYJKoZIhvcNAQEFBQAwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tMB4XDTA0MDIxMzEwMTMxNVoXDTM1MDIxMzEwMTMxNVowgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDBR07d/ETMS1ycjtkpkvjXZe9k+6CieLuLsPumsJ7QC1odNz3sJiCbs2wC0nLE0uLGaEtXynIgRqIddYCHx88pb5HTXv4SZeuv0Rqq4+axW9PLAAATU8w04qqjaSXgbGLP3NmohqM6bV9kZZwZLR/klDaQGo1u9uDb9lr4Yn+rBQIDAQABo4HuMIHrMB0GA1UdDgQWBBSWn3y7xm8XvVk/UtcKG+wQ1mSUazCBuwYDVR0jBIGzMIGwgBSWn3y7xm8XvVk/UtcKG+wQ1mSUa6GBlKSBkTCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb22CAQAwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOBgQCBXzpWmoBa5e9fo6ujionW1hUhPkOBakTr3YCDjbYfvJEiv/2P+IobhOGJr85+XHhN0v4gUkEDI8r2/rNk1m0GA8HKddvTjyGw/XqXa+LSTlDYkqI8OwR8GEYj4efEtcRpRYBxV8KxAW93YDWzFGvruKnnLbDAF6VR5w/cCMn5hzGCAZowggGWAgEBMIGUMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbQIBADAJBgUrDgMCGgUAoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMTQwODA4MDEwNzI1WjAjBgkqhkiG9w0BCQQxFgQUSC189xdBndH8w4Qsn9MblxZS3akwDQYJKoZIhvcNAQEBBQAEgYCSurgkCFZ8xs7/ERVRWbVUVLUeUgO+o2iGg+cO/Aa0anPEHzzB+FjSeX+Bj770Mp847fgfrzep7oISG496HZcjtckDkYl4gDQMRrYtv6cRGQJoKerUMZwVDNXS8+bH3rm66USF5hnVuhh2Tu4qvWhrd11UDnFDSb7KAYRaqRWE2A==-----END PKCS7-----">

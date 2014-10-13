@@ -4,52 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel=stylesheet type=text/css href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+     <link rel=icon type="image/x-icon" href="img/favicon.png">
+   <link rel=stylesheet type=text/css href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel=stylesheet type="text/css" href="css/datatables.bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/loadidata-ng-bar.min.css">
+    <link rel="stylesheet" type="text/css" href="css/loading-bar.min.css">
     <title>BLOC Index</title>
 </head>
 
 <body data-ng-controller="apiCtrl">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">
-                    <img src="img/logo.png" height=50px width=400px style="margin-top:-15px; margin-left:-15px;">
-                </a>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                    <img src="img/logo.png" alt="Logo" class="logo">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href='/'>Home</a></li>
+                        <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="nations.html">Nation List</a></li>
+                                <li><a href="nation.html" class="active">Nation Viewer</a></li>
+                                <li><a href="target.html">Target Finder</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href='#'class="dropdown-toggle" data-toggle="dropdown">Backend <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="scraper.html">Scraper</a></li>
+                                <li><a href="api.html">API</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href='/'>Home</a>
-                    </li>
-                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="nations.html">Nation List</a>
-                            </li>
-                            <li><a href="nation.html" class="active">Nation Viewer</a>
-                            </li>
-                            <li><a href="target.html">Target Finder</a>
-                            </li>
-                            <li><a href="planner.html">Planner</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="scraper.html">Scraper</a>
-                    </li>
-                    <li><a href="about.html">About</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container" style="paddidata-ng-top: 60px;">
+        </nav>
+    <div class="container" style="padding-top: 60px;">
         <h1>BLOC Players</h1>
         <p>This is a searchable and filterable list of all the players on <a href="http://blocgame.com">BLOC</a>, powered by Humphreys BLOC API</p>
         <div class="nation-table">
-            <table datatable="" id="nations" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover table table-striped"></table>
+            <table data-datatable="" id="nations" data-dt-options="dtOptions" data-dt-columns="dtColumns" class="row-border hover table table-striped"></table>
         </div>
     </div>
     
@@ -61,7 +59,7 @@
     <script src="js/angular-datatables.min.js"></script>
     <script src="js/dataTables.colReorder.min.js"></script>
     <script src="js/dataTables.colVis.min.js"></script>
-    <script src="js/loadidata-ng-bar.min.js"></script>
+    <script src="js/loading-bar.min.js"></script>
 
 
     <script src="js/nations.js"></script>

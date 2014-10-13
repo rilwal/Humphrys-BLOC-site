@@ -1,10 +1,10 @@
 (function () {
     "use strict";
-    var apiApp = angular.module("apiApp", ['angular-loadidata-ng-bar']);
+    var apiApp = angular.module("apiApp", ['angular-loading-bar']);
     apiApp.controller("apiCtrl", ['$scope', '$http', function ($scope, $http) {
         function getTargets() {
             var url = "http://api.abscission.net/api/nations/?Count=100&Neighbouring=" + $scope.nation["Region"] + "&GDP Bracket=" + $scope.nation["Gross Domestic Product"] + '&';
-            if ($scope.alliancerules === true) {
+            if ($scope.ar === true) {
                 url += "SLUT&";
             }
             if ($scope.hasOwnProperty("Alliance")) {

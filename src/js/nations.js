@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    var apiApp = angular.module("apiApp", ['datatables', 'angular-loadidata-ng-bar']);
+    var apiApp = angular.module("apiApp", ['datatables', 'angular-loading-bar']);
     apiApp.directive('integer', function () {
         return {
             require: 'ngModel',

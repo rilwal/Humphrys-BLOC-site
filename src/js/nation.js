@@ -6,8 +6,8 @@
         function ($scope, $http) {
 
             function getPlayer() {
-                var url = "http://api.abscission.net/api/nations/?Count=1";
-                if ($scope.Name !== null) {
+                var url = "http://api.abscission.net/api/nations/?Count=1&Order=1&Sort=_id";
+                if ($scope.Name !== undefined) {
                     url += "&Name=" + $scope.Name;
                 }
                 $http({
