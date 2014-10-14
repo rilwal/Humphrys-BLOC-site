@@ -6,10 +6,9 @@ Building the source
 -------------------
 To build the source:
 
-```sh
+```bash
 git clone https://github.com/rilwal/Humphrys-BLOC-site.git
+cd Humphrys-BLOC-site
 npm install
 grunt
 ```
-
-Between steps 2 and 3 put closure.jar in the top directory.
